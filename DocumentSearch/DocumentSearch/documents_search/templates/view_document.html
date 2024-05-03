@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Document</title>
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import materialize.css -->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection"/>
+    <style>
+        body {
+            background: linear-gradient(to right, #1d4f25, #6fa087); /* Olive green gradient */
+            color: #000; /* Black text color */
+            font-family: 'Roboto', sans-serif; /* Google's Roboto font for Material Design */
+        }
+        .document-container {
+            background-color: #fff; /* White background for the document content */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h4 class="header">Document Name {{ document.file.name }}</h4>
+        <div class="col s6">
+            <!-- Home Button -->
+            <a href="{% url 'home' %}" class="btn waves-effect waves-light right"><i class="material-icons left">home</i>Home</a>
+        </div>
+        <div class="document-container" style="white-space: pre-wrap;">{{ text|safe }}</div> <!-- Using safe filter to render HTML and maintain white-space formatting -->
+    </div>
+
+    <!-- Import jQuery and materialize.js -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import materialize.css -->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection"/>
+    <style>
+        body {
+            background: linear-gradient(to right, #1d4f25, #6fa087); /* Olive green gradient */
+            color: #000; /* Black text color */
+        }
+        .result-list {
+            padding-left: 0;
+            list-style-type: none;
+        }
+        .result-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .result-item a {
+            color: #f1f2f3; /* Google blue for links */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h4 class="header">Search Results for "{{ query }}"</h4>
+        {% if results %}
+            <ul class="result-list">
+            {% for result in results %}
+                <li class="result-item">
+                    {{ result.document_name }}
+                    <a href="{% url 'view_document' result.doc_id result.term %}" class="waves-effect waves-light btn-small"><i class="material-icons left">visibility</i>View Document</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+            <div class="col s6">
+                <!-- Home Button -->
+                <a href="{% url 'home' %}" class="btn waves-effect waves-light right"><i class="material-icons left">home</i>Home</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Import jQuery and materialize.js -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

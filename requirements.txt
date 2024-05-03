@@ -1,0 +1,7 @@
+Django>=3.2
+PyPDF2
+python-docx
+nltk
+PyMuPDF
+Pillow
+pytesseract 
